@@ -1,0 +1,29 @@
+productName: test-electron
+appId: com.electron.test.cg
+compression: maximum
+afterSign: scripts/notarize.js
+directories:
+  output: release/
+win:
+  target: nsis
+  # certificateFile: "./cert/windows.pfx"
+  # certificatePassword: mypass
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createStartMenuShortcut: true
+  artifactName: "${productName}.${ext}"
+mac:
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: "./build/entitlements.mac.plist"
+  entitlementsInherit: "./build/entitlements.mac.plist"
+  provisioningProfile: embedded.provisionprofile
+  extendInfo:
+    NSMicrophoneUsageDescription: Please give us access to your microphone
+    NSCameraUsageDescription: Please give us access to your microphone
+dmg:
+  sign: false
+linux:
+  target: [AppImage, deb, snap]
+  category: Office

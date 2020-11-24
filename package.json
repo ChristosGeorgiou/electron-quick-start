@@ -2,9 +2,13 @@
   "name": "electron-quick-start",
   "version": "1.0.0",
   "description": "A minimal Electron application",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "prebuild": "node scripts/prebuild.js",
+    "build": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +21,12 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^11.0.1"
+    "electron": "^11.0.3",
+    "electron-builder": "^22.9.1",
+    "electron-notarize": "^1.0.0",
+    "git-repo-info": "^2.1.1"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }
